@@ -1,0 +1,16 @@
+[package]
+name = "moove_money"
+version = "1.0.0"
+authors = []
+
+[addresses]
+moove_money = "0xf136610f92fb19db84152cf4d9b7e63ce135597c7fa77cec43947620f977c7f8"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/movementlabsxyz/aptos-core.git"
+rev = "movement"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]

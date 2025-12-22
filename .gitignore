@@ -1,0 +1,5 @@
+.movement/
+build/
+node_modules/
+*.log
+test_accounts.json

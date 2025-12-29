@@ -5,7 +5,8 @@
   "scripts": {
     "send": "tsx scripts/send_multiple.ts",
     "register-coin": "tsx scripts/register_coin.ts",
-    "create-accounts": "tsx scripts/create_test_accounts.ts"
+    "create-accounts": "tsx scripts/create_test_accounts.ts",
+    "tx-history": "tsx scripts/get_transaction_history.ts"
   },
   "dependencies": {
     "@aptos-labs/ts-sdk": "^5.2.0",

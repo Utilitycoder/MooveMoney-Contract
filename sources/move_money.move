@@ -72,26 +72,25 @@ module moove_money::moove_money {
         let total_amount = 0;
         let i = 0;
         while (i < num_recipients) {
-            let amount = *vector::borrow(&amounts, i);
-            total_amount = total_amount + amount;
-            i = i + 1;
+            let amount = amounts[i];
+            total_amount += amount;
+            i += 1;
         };
 
         // Transfer to each recipient
         i = 0;
         while (i < num_recipients) {
-            let recipient = *vector::borrow(&recipients, i);
-            let amount = *vector::borrow(&amounts, i);
+            let recipient = recipients[i];
+            let amount = amounts[i];
             
             // Only transfer if amount is greater than 0
             if (amount > 0) {
                 coin::transfer<AptosCoin>(sender, recipient, amount);
             };
             
-            i = i + 1;
+            i += 1;
         };
 
-        // Emit event (Note: In production, you'd use event::emit, but for simplicity we'll skip it here)
         event::emit(BatchTransferEvent {
             sender: sender_addr,
             num_recipients,
@@ -133,7 +132,7 @@ module moove_money::moove_money {
         let i = 0;
         while (i < num_recipients) {
             vector::push_back(&mut amounts, amount_per_recipient);
-            i = i + 1;
+            i += 1;
         };
 
         // Delegate to the main function
@@ -153,8 +152,8 @@ module moove_money::moove_money {
         let i = 0;
         let len = vector::length(&amounts);
         while (i < len) {
-            total = total + *vector::borrow(&amounts, i);
-            i = i + 1;
+            total += amounts[i];
+            i += 1;
         };
         total
     }

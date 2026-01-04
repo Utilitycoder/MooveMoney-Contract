@@ -11,9 +11,11 @@ const configContent = readFileSync(configPath, "utf-8");
 const config = parse(configContent);
 
 const defaultProfile = config.profiles.default;
-const privateKeyHex = defaultProfile.private_key.replace("ed25519-priv-", "");
+// const privateKeyHex = defaultProfile.private_key.replace("ed25519-priv-", "");
 const accountAddress = defaultProfile.account;
 const restUrl = defaultProfile.rest_url;
+
+const new_key = "ed25519-priv-0x058ab1cd10bfd53b2c5feaf298082bb8044743b0bff1fe6e9f98db33b69cd085"
 
 // Initialize Aptos client
 const aptosConfig = new AptosConfig({
@@ -23,7 +25,7 @@ const aptosConfig = new AptosConfig({
 const aptos = new Aptos(aptosConfig);
 
 // Create account from private key
-const privateKey = new Ed25519PrivateKey(privateKeyHex);
+const privateKey = new Ed25519PrivateKey(new_key);
 const account = Account.fromPrivateKey({ privateKey });
 
 // Module information
@@ -237,8 +239,8 @@ async function sendMoveToMultiple(
 async function main() {
   // Example usage - modify these values as needed
   const recipients = [
-    "0x8d90c85b5a2408368af98610a245037638bb773256498851a231974cfc100f30", // Replace with actual recipient addresses
-    "0x43e3c42d035f2dcac6c573203824d899c68236dcd8dd378639aa94365ae49646", // Replace with actual recipient addresses
+    "0xf136610f92fb19db84152cf4d9b7e63ce135597c7fa77cec43947620f977c7f8", // Replace with actual recipient addresses
+    "0xc8887393decbbd7eab16d4c50831d39a58dec794e9ad96e6d25f6aff1570af35", // Replace with actual recipient addresses
   ];
 
   const amounts = [

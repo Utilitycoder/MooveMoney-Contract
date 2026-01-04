@@ -6,10 +6,13 @@
     "send": "tsx scripts/send_multiple.ts",
     "register-coin": "tsx scripts/register_coin.ts",
     "create-accounts": "tsx scripts/create_test_accounts.ts",
-    "tx-history": "tsx scripts/get_transaction_history.ts"
+    "tx-history": "tsx scripts/get_transaction_history.ts",
+    "bridge-usdc": "tsx scripts/bridge_usdc.ts"
   },
   "dependencies": {
     "@aptos-labs/ts-sdk": "^5.2.0",
+    "@layerzerolabs/lz-aptos-sdk-v2": "^3.0.151",
+    "ethers": "^6.16.0",
     "yaml": "^2.3.4"
   },
   "devDependencies": {

@@ -111,66 +111,11 @@ function displayTransaction(txn: any, index: number, total: number): void {
   }
 
   // Display gas information
-  //   const gasUsed = txn.gas_used || txn.transaction?.gas_used;
-  //   const gasUnitPrice = txn.gas_unit_price || txn.transaction?.gas_unit_price;
+    const gasUsed = txn.gas_used || txn.transaction?.gas_used;
 
-  //   if (gasUsed) {
-  //     console.log(`⛽ Gas Used: ${gasUsed}`);
-  //   }
-
-  //   if (gasUnitPrice) {
-  //     console.log(`💰 Gas Unit Price: ${gasUnitPrice}`);
-  //   }
-
-  //   // Display payload details if available
-  //   const payload = txn.payload || txn.transaction?.payload;
-  //   if (payload) {
-  //     console.log(`\n📦 Payload Details:`);
-  //     if (payload.function) {
-  //       console.log(`   Function: ${payload.function}`);
-  //     }
-  //     if (payload.type_arguments) {
-  //       console.log(`   Type Arguments: ${JSON.stringify(payload.type_arguments)}`);
-  //     }
-  //     if (payload.arguments) {
-  //       console.log(`   Arguments: ${JSON.stringify(payload.arguments, null, 2)}`);
-  //     }
-  //   }
-
-  //   // Display events if available
-  //   const events = txn.events || txn.transaction?.events;
-  //   if (events && events.length > 0) {
-  //     console.log(`\n📢 Events (${events.length}):`);
-  //     events.forEach((event: any, idx: number) => {
-  //       console.log(`   ${idx + 1}. Type: ${event.type || event.key}`);
-  //       if (event.data) {
-  //         console.log(`      Data: ${JSON.stringify(event.data, null, 6)}`);
-  //       }
-  //     });
-  //   }
-
-  //   // Display changes if available
-  //   const changes = txn.changes || txn.transaction?.changes;
-  //   if (changes && changes.length > 0) {
-  //     console.log(`\n🔄 Resource Changes (${changes.length}):`);
-  //     changes.forEach((change: any, idx: number) => {
-  //       console.log(`   ${idx + 1}. Type: ${change.type}`);
-  //       if (change.data) {
-  //         // Format coin store changes nicely
-  //         if (change.data.coin?.value) {
-  //           const amount = formatAmount(change.data.coin.value);
-  //           console.log(`      Coin Amount: ${amount} MOVE`);
-  //         }
-  //         console.log(`      Data: ${JSON.stringify(change.data, null, 6)}`);
-  //       }
-  //     });
-  //   }
-
-  //   // Display VM status if transaction failed
-  //   const vmStatus = txn.vm_status || txn.transaction?.vm_status;
-  //   if (!success && vmStatus) {
-  //     console.log(`\n❌ VM Status: ${vmStatus}`);
-  //   }
+    if (gasUsed) {
+      console.log(`⛽ Gas Used: ${gasUsed}`);
+    }
 }
 
 /**
@@ -223,7 +168,7 @@ async function getReceivedTransactions(
           return {
             ...event,
             transaction, // Attach full transaction details
-            type: (transaction as any).sender === accountAddress ? "sent_payment" : "received_payment",
+            type: "received_payment",
             timestamp: transaction.timestamp, // Lift timestamp for sorting
             hash: transaction.hash,
             success: (transaction as any).success,
